@@ -3,7 +3,8 @@ $(document).ready(function() {
   var outputList = document.getElementById("list-output");
   var bookUrl = "https://www.googleapis.com/books/v1/volumes?q=";
   var apiKey = "key=AIzaSyBO5-hfPchgdpNDolk2mpMMt4DyurhLCDU";
-  var placeHldr = '<img src="https://via.placeholder.com/150">';
+  //var placeHldr = '<img src="../img/noCover.jpeg">';
+  var placeHldr = "img/noCover.jpeg";
   var searchData;
 
   //listener for search button
@@ -16,7 +17,7 @@ $(document).ready(function() {
        displayError();
      }
     else {
-       console.log(searchData);
+       //console.log(searchData);
        // $.get("https://www.googleapis.com/books/v1/volumes?q="+searchData, getBookData()});
        $.ajax({
           url: bookUrl + searchData,
@@ -61,16 +62,22 @@ $(document).ready(function() {
         bookLink2 = item2.volumeInfo.previewLink;
         bookIsbn2 = item2.volumeInfo.industryIdentifiers[1].identifier
         bookImg2 = (item2.volumeInfo.imageLinks) ? item2.volumeInfo.imageLinks.thumbnail : placeHldr ;
-
+        
+        if (bookImg1 == "")  {
+          bookImg1 == "coucou";
+        }
+        console.log(bookImg1);
+        console.log(bookImg2);
         // in production code, item.text should have the HTML entities escaped.
         outputList.innerHTML += '<div class="row mt-4">' +
                                 formatOutput(bookImg1, title1, author1, publisher1, bookLink1, bookIsbn) +
                                 formatOutput(bookImg2, title2, author2, publisher2, bookLink2, bookIsbn2) +
                                 '</div>';
 
-        console.log(outputList);
+        //console.log(outputList);
       }
    }
+
 
    /*
    * card element formatter using es6 backticks and templates (indivial card)
