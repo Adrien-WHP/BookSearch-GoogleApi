@@ -63,11 +63,8 @@ $(document).ready(function() {
         bookIsbn2 = item2.volumeInfo.industryIdentifiers[1].identifier
         bookImg2 = (item2.volumeInfo.imageLinks) ? item2.volumeInfo.imageLinks.thumbnail : placeHldr ;
         
-        if (bookImg1 == "")  {
-          bookImg1 == "coucou";
-        }
-        console.log(bookImg1);
-        console.log(bookImg2);
+        console.log(bookLink1);
+        console.log(bookLink2);
         // in production code, item.text should have the HTML entities escaped.
         outputList.innerHTML += '<div class="row mt-4">' +
                                 formatOutput(bookImg1, title1, author1, publisher1, bookLink1, bookIsbn) +
@@ -98,7 +95,7 @@ $(document).ready(function() {
                <h5 class="card-title">${title}</h5>
                <p class="card-text">Author: ${author}</p>
                <p class="card-text">Publisher: ${publisher}</p>
-               <a target="_blank" href="${viewUrl}" class="btn btn-secondary">Read Book</a>
+               <a target="_blank" href="${bookLink}" class="btn btn-secondary">Read Book</a>
              </div>
            </div>
          </div>
